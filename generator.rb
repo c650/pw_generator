@@ -1,29 +1,19 @@
 #declare alphabets just because
 $the_alphabet = "abcdefghijklmnopqrstuvwxyz"
 $numerals = "0123456789"
+
+$all_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 #encryption method
 def encrypt(key, phrase)
-  array_crypt = $the_alphabet.split('')
+  array_crypt = $all_chars.split('')
   key = key - 1
   for i in 0..key
     temp1 = array_crypt[i]
     array_crypt.push(temp1)
   end
-  array_crypt = array_crypt.last(26)
+  array_crypt = array_crypt.last(62)
   new_alpha = array_crypt.join
-  phrase = phrase.tr($the_alphabet, new_alpha)
-  phrase = phrase.tr($the_alphabet.upcase, new_alpha.upcase)
-  
-  array_crypt2 = $numerals.split('')
-
-  for i in 0..key 
-  	temp2 = array_crypt2[i]
-    array_crypt2.push(temp2)
-  end
-
-  array_crypt2 = array_crypt2.last(10)
-  new_numerals = array_crypt2.join
-  phrase = phrase.tr($numerals, new_numerals)
+  phrase = phrase.tr($all_chars, new_alpha)
 
   return phrase
   
